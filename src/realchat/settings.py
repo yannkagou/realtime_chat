@@ -27,6 +27,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+LOGOUT_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/rooms/'
+LOGIN_URL = '/login/'
 
 # Application definition
 
@@ -39,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'channels',
     'core',
+    'room',
 ]
 
 MIDDLEWARE = [
@@ -70,6 +74,14 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'realchat.wsgi.application'
+ASGI_APPLICATION = 'realchat.asgi.application'
+
+
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channela.layers.InMemoryChannelLayer'
+    }
+}
 
 
 # Database
