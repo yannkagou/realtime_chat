@@ -7,9 +7,9 @@ class Room(models.Model):
     
 class Message(models.Model):
     room = models.ForeignKey(Room, related_name='messages', on_delete=models.CASCADE)
-    user = models.ForeignKey(User, related_name='users', on_delete=models.CASCADE)
-    content = models.TextField
-    date_added = models.DateTimeField(auto_now_add=False)
+    user = models.ForeignKey(User, related_name='messages', on_delete=models.CASCADE)
+    content = models.TextField(null=True, blank=True)
+    date_added = models.DateTimeField(auto_now_add=True, null=True, blank=True)
     
     class Meta:
         ordering = ('date_added',)
